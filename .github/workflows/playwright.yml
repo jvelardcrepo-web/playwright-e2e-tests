@@ -48,5 +48,5 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: allure-results
-          path: allurre-results/
+          path: allure-results/
           retention-days: 30
