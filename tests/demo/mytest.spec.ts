@@ -11,7 +11,7 @@ test("basic test", async ({ page }) => {
   await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
 });
 
-test.only("Should demo locators", async ({ page }) => {
+test("Should demo locators", async ({ page }) => {
   // ✅ page.getBy() and page.locator() methods returns the "locator" object
   // ✅ The above methods not to be `awaited`
   // ✅ The type of locator is an `object`
