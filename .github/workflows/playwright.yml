@@ -21,31 +21,29 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Instalar Allure commandline
-        run: npm install -g allure-commandline --save-dev
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Install Allure CLI (local dev dep)
+        run: npm i -D allure-commandline
+      - name: Run Playwright tests (Allure reporter)
+        run: npx playwright test --reporter=github,html,allure-playwright
       
-      - name: Generate Allure Report
-        run: |
-          allure generate allurre-results --clean -o allure-report
-          allure open -h 127.0.0.1 -p 8080 allure-report &
+      - name: Generate Allure HTML report
+        run: npx allure generate allure-results --clean -o allure-report
       - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+        if: ${{ always() }}
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
       
       - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+        if: ${{ always() }}
         with:
           name: allure-report
           path: allure-report/
           retention-days: 30
 
       - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+        if: ${{ always() }}
         with:
           name: allure-results
           path: allure-results/
