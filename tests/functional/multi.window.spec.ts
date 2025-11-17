@@ -33,6 +33,6 @@ test.describe("Multiple Windows flow", () => {
 
     // Cierre opcional de popups para liberar recursos
     await firstPopup.close();
-    await secondPopup.close();
+    await secondPopup.close(); 
   });
 });
