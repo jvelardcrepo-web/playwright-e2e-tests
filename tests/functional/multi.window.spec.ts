@@ -31,7 +31,7 @@ test.describe("Multiple Windows flow", () => {
     // 5) Regresar a la ventana principal y comprobar seguimos en la página de Multiple Windows
     await expect(page.locator("h3")).toContainText("Opening a new window");
 
-    // Cierre opcional de popups para liberar recursos
+    // Cierre opcional de popups para liberar recursos 2
     await firstPopup.close();
     await secondPopup.close(); 
   });
